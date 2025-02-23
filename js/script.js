@@ -1,9 +1,7 @@
 const baseURL = '/';
-const maxWidth = 720;
-const maxHeight = 300;
 async function fetchImagesData() {
-    const response = await fetch(`${baseURL}json/list.json`);
-    return await response.json();
+  const response = await fetch(`${baseURL}json/list.json`);
+  return await response.json();
 }
 function getRandomImage(imagesData) {
     const imageTypes = Object.keys(imagesData.images);
@@ -15,37 +13,36 @@ function createImageElement(src) {
     const img = document.createElement('img');
     img.src = src;
     img.className = 'banner-image';
-    img.style.height = `${maxHeight}px`;
-    img.style.width = 'auto';
     return img;
+}
+function positionWatermark() {
+  const img = document.querySelector('.banner-image');
+  const watermark = document.querySelector('.watermark');
+  if (img && watermark) {
+    const imgRect = img.getBoundingClientRect();
+    watermark.style.top = `${imgRect.bottom + window.scrollY - watermark.offsetHeight}px`;
+    watermark.style.left = `${imgRect.right + window.scrollX - watermark.offsetWidth}px`;
+  }
 }
 async function displayBanner() {
     const container = document.getElementById('bannerContainer');
-    container.style.position = 'relative';
     const imagesData = await fetchImagesData();
     const randomImage = getRandomImage(imagesData);
-    container.innerHTML = '';
     const img = createImageElement(`${baseURL}img/${randomImage.type}/${randomImage.src.split('/').pop()}`);
-    img.onload = () => {
-        const width = Math.max(Math.min(img.naturalWidth, maxWidth), maxWidth);
-        const height = Math.max(Math.min(img.naturalHeight, maxHeight), maxHeight);
-        container.style.width = `${width}px`;
-        container.style.height = `${height}px`;
-        if (randomImage.type === 'gif') {
-            const gifDuration = img.naturalWidth / img.naturalHeight * 1000;
-            setTimeout(displayBanner, gifDuration * 6);
-        }
-    };
     container.appendChild(img);
-    const watermark = document.getElementById('watermark');
-    watermark.onclick = () => {
-        window.location.href = 'https://mcalec.dev';
-    };
+    img.onload = positionWatermark;
 }
-displayBanner();
-setInterval(() => {
-    const currentImage = document.querySelector('.banner-image');
-    if (currentImage && currentImage.getAttribute('type') !== 'gif') {
-        displayBanner();
-    }
+setInterval(async () => {
+  const container = document.getElementById('bannerContainer');
+  const currentImage = document.querySelector('.banner-image');
+  if (currentImage) {
+    container.removeChild(currentImage);
+  }
+  const imagesData = await fetchImagesData();
+  const randomImage = getRandomImage(imagesData);
+  const img = createImageElement(`${baseURL}img/${randomImage.type}/${randomImage.src.split('/').pop()}`);
+  container.appendChild(img);
+  img.onload = positionWatermark;
 }, 7500);
+displayBanner();
+window.addEventListener('resize', positionWatermark);
