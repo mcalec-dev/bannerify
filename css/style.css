@@ -4,7 +4,7 @@ html, body, div {
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: #f0f0f0;
+  background: transparent;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -12,6 +12,7 @@ html, body, div {
   display: none;
 }
 .banner-container {
+  background: transparent;
   position: relative;
   text-align: center;
   color: white;
@@ -44,7 +45,7 @@ html, body, div {
   font-size: 1em;
   position: absolute;
   background-color: #220;
-  margin: calc(0px - 10px) calc(0px - 8px);
+  margin: -10px -8px 0 0;
   padding: 5px;
   cursor: pointer;
   border-radius: 8px;
