@@ -38,8 +38,7 @@ div {
   border-radius: 12px;
   object-fit: contain;
   position: relative;
-  border: 3px solid #888;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 3px solid #1f1f1f;
 }
 .watermark {
   top: 0;
