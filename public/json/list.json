@@ -1,13 +1,13 @@
 {
   "images": {
     "gif": [
-      { "num": 1, "src": "/img/1.gif", "type": "gif" },
-      { "num": 2, "src": "/img/2.gif", "type": "gif" },
-      { "num": 3, "src": "/img/3.gif", "type": "gif" },
-      { "num": 4, "src": "/img/4.gif", "type": "gif" },
-      { "num": 5, "src": "/img/5.gif", "type": "gif" },
-      { "num": 6, "src": "/img/6.gif", "type": "gif" },
-      { "num": 7, "src": "/img/7.gif", "type": "gif" }
+      { "num": 1, "src": "/img/1.gif", "type": "gif", "repeat": "2" },
+      { "num": 2, "src": "/img/2.gif", "type": "gif", "repeat": "1" },
+      { "num": 3, "src": "/img/3.gif", "type": "gif", "repeat": "3" },
+      { "num": 4, "src": "/img/4.gif", "type": "gif", "repeat": "2" },
+      { "num": 5, "src": "/img/5.gif", "type": "gif", "repeat": "1" },
+      { "num": 6, "src": "/img/6.gif", "type": "gif", "repeat": "2" },
+      { "num": 7, "src": "/img/7.gif", "type": "gif", "repeat": "3" }
     ],
     "jpg": [
       { "num": 1, "src": "/img/1.jpg", "type": "jpg" },
@@ -19,7 +19,8 @@
       { "num": 1, "src": "/img/1.png", "type": "png" },
       { "num": 2, "src": "/img/2.png", "type": "png" },
       { "num": 3, "src": "/img/3.png", "type": "png" },
-      { "num": 4, "src": "/img/4.png", "type": "png" }
+      { "num": 4, "src": "/img/4.png", "type": "png" },
+      { "num": 5, "src": "/img/5.png", "type": "png" }
     ]
   }
 }
